@@ -9,9 +9,9 @@ This widget represents current brightness level.
 Firstly you need to get the current brightness level. There are two options:
 
  - using `xbacklight` command (depending on your video card (I guess) it may or may not work)
- 
+
     To check if it works install xbackligth and check if it works:
- 
+
     ```bash
     sudo apt-get install xbacklight
     xbacklight -get
@@ -20,7 +20,7 @@ Firstly you need to get the current brightness level. There are two options:
     If there is no output it means that it doesn't work, but there is a second option:
 
  - using `light` command
- 
+
     Install it from this git repo: [github.com/haikarainen/light](https://github.com/haikarainen/light) and check if it works but running
 
     ```bash
@@ -31,6 +31,9 @@ Firstly you need to get the current brightness level. There are two options:
     49.18
     ```
 Depending on the chosen option change `GET_BRIGHTNESS_CMD` variable in **brightness.lua**.
+
+Personal notes:
+For some reason on my laptop; it will not read the proper values from light -G; I had to specifiy 'acpi_video1'. Intel_backlight command works through `randr`. However, as this issue only is present on laptop screen mode only, one can just use the acpi video. Furthermore, light -Lk needs similar adjustments.
 
 Then in **rc.lua** add the import on top of the file and then add widget to the wibox:
 
